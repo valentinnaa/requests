@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1 id="a"></h1>
+<script>
+    const baseUrl="http://localhost:3000/"
+async function getRandomNumbers(theUrl){
+    try{
+        const response = await axios.get(theUrl)
+      }catch(err){
+        console.log(err)
+    }
+}
+
+var html = '<html><head><style> tr,td {border:1px solid black; width: 50px; height: 50px;} .brown{background-color: brown;} .blue{background-color: blue;} .gray{background-color: gray;} </style></head><body><table>'
+ for (i = 0; i<=15; i++){
+ html+= '<tr>'
+ for (j = 0; j <=15; j++){
+    var numbers = getRandomNumbers("http://localhost:3000/")
+    var c= parseInt(numbers)
+    if (c == -1 || c== 0 || c== 1){
+        html+='<td class="brown"></td>'
+        index++
+    }
+    if ( c== 2){
+        html+='<td class="blue"></td>'
+        index++
+    }
+    if (c == 3 || c==4 || c==5) {
+        html+='<td class="gray"></td>'
+        index++
+    }
+    }  
+html+='</tr>'
+}
+html+='</table></body></html>'
+    document.getElementById("a").innerHTML=html
+    
+</script>
+</html>
